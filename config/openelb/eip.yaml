@@ -1,0 +1,9 @@
+apiVersion: network.kubesphere.io/v1alpha2
+kind: Eip
+metadata:
+  name: eip-pool
+spec:
+  address: 172.31.173.241-172.31.173.249 # 注意修改成服务器同网段
+  protocol: layer2
+  interface: eth0
+  disable: false
