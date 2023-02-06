@@ -30,7 +30,7 @@ apt update
 mkdir -p tool
 cd tool
 
-## 下载安装 kubectl
+## 本地下载安装 kubectl (kubekey 会在新环境安装 kubectl)
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 ### kubectl 自动补全
@@ -117,4 +117,8 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 2. [demo](https://github.com/argoproj/argocd-example-apps)
     - guestbook application (第一次 outofsynced 启动2次成功)
 
-## 尝试创建一个应用
+## 尝试创建一个应用(使用 Github-Action)
+![cicd-workflow](img/github-action-cicd-workflow.png)
+
+Note:
+    1. 为在代码中不暴露 dockerhub 的 username/password 以及 github-token，需要以 secret 的形式存储在源码仓库中
